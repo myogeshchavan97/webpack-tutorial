@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack serve"
+    "dev-build": "webpack --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js && npm run post-build",
+    "post-build": "cp public/_redirects build",
+    "start": "webpack serve --config webpack.dev.js"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +24,11 @@
     "@babel/preset-react": "^7.18.6",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
+    "css-minimizer-webpack-plugin": "^5.0.0",
     "dotenv": "^16.0.3",
     "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.5",
     "sass-loader": "^13.2.1",
     "style-loader": "^3.3.2",
     "webpack": "^5.76.2",
